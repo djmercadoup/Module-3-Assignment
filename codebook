@@ -1,4 +1,4 @@
-activityLabels - reference data table for activity descriptions
+activityLabels - reference data table for activity descriptions taken from file activity_labels.txt
 classLabels	activityName
 	1 	WALKING
 	2 	WALKING_UPSTAIRS
@@ -8,13 +8,25 @@ classLabels	activityName
 	6 	LAYING
  
 
-combinedt -  output dataset of run_analysis.R
+combinedt -  output dataset of run_analysis.R processed from files activity_labels.txt, features.txt, X_train.txt, 
+subject_train.txt, y_train.txt, X_test.txt, subject_test.txt, y_test.txt
 10,299 observation of 69 variables 
 Variable 1 - 66 are extracted from the original datasets that contains only mean and std measurements
 Variable 67 is the original subject identifier number from whom the observation was made
 Variable 68 is the activity class label number
 Variable 69 is the corresponding activity name to Variable 68
 
+Processing done:
+1) The test datasets were appended to the train datasets to create a merged datasets for X, subject, and y.
+2) The wanted features were selected from the original feature labels form features.txt. Only features of mean and std 
+   measurements were selected. A new merged data set was extracted selecting only the wanted variables in there merged X 
+   dataset from step 1. 
+3) The descriptive activity labels were added to the activitydt(y) dataset by joining the reference data table activityLabels 
+   of activity names
+4) The appropriate column labels were constructed from the original features names. Special characters like "(" and ")" were 
+   removed. However "-" was retained as a separator. The processed tables from step 1), 2) and 3) are combined columnwise to
+   give the resulting dataset.
+   
 Full list of variables:
 [1] "tBodyAcc-mean-X"           "tBodyAcc-mean-Y"           "tBodyAcc-mean-Z"          
  [4] "tBodyAcc-std-X"            "tBodyAcc-std-Y"            "tBodyAcc-std-Z"           
@@ -45,6 +57,9 @@ meandt - resulting dataset of means grouped by subject and activity of combinedt
 180 observations of 68 Variables
 Variable 1 is the subject identifier number from whom the observations were grouped
 Variable 2 is the activity class label number
+
+Processing done:
+5) The output data set from step (4) was grouped by subject and actvity then summarized to compute the mean. 
 
 Full list of variables:
  [1] "subjectId"                 "activityClass"             "tBodyAcc-mean-X"          
