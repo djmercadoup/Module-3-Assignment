@@ -1,5 +1,6 @@
 # Module-3-Assignment
 Peer-graded Assignment: Getting and Cleaning Data Course Project
+
 Submitted by: Danilo J. Mercado (djmercado@up.edu.ph)
 
 The data collected from accelerometers of the Samsung Galaxy S smartphone was downloaded, manipulated and cleaned in R.
